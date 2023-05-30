@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salonbooking/frontend/changepassword.dart';
 import 'package:salonbooking/frontend/dashboard.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -72,7 +73,8 @@ class _LoginScreenState extends State<LoginScreen> {
               ElevatedButton(
                 child: Text('Reset Password'),
                 onPressed: () {
-                  Navigator.pushNamed(context, '/reset_password');
+                  Navigator.pushReplacement(context, 
+                  MaterialPageRoute(builder: ((context) => ChangePasswordScreen())));
                 },
               ),
             ],

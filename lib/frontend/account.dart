@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:salonbooking/frontend/changepassword.dart';
-import 'package:salonbooking/frontend/paymentscreen.dart';
 
 class MyAccountScreen extends StatelessWidget {
   @override
@@ -10,38 +8,30 @@ class MyAccountScreen extends StatelessWidget {
         title: Text('My Account'),
       ),
       body: ListView(
+        padding: EdgeInsets.all(16.0),
         children: [
           ListTile(
-            title: Text('Payment Methods'),
+            title: Text('Payment Method'),
             onTap: () {
-              Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => PaymentMethodsScreen()),
-        );
-          
-              // Handle Payment Methods navigation
+              // Handle Payment Method option click
             },
           ),
           ListTile(
             title: Text('Change Password'),
             onTap: () {
-                Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ChangePasswordScreen()),
-        );
-              // Handle Change Password navigation
+              // Handle Change Password option click
             },
           ),
           ListTile(
             title: Text('Contact Info'),
             onTap: () {
-              // Handle Contact Info navigation
+              // Handle Contact Info option click
             },
           ),
           ListTile(
             title: Text('Delete Account'),
             onTap: () {
-              // Handle Delete Account navigation
+              // Handle Delete Account option click
             },
           ),
         ],

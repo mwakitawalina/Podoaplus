@@ -1,12 +1,64 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
+
+import '../Utils/navigation.dart';
+import 'MyAccount.dart';
+import 'imagedetail.dart';
 
 class Dashboard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            DrawerHeader(
+              decoration: BoxDecoration(
+                color: Colors.pink,
+              ),
+              child: Text(
+                'Menu',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 24,
+                ),
+              ),
+            ),
+            ListTile(
+              title: Text('My Account'),
+              onTap: () {
+                Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => MyAccountScreen(),
+                  ),
+                );
+              },
+            ),
+            ListTile(
+              title: Text('My Appointments'),
+              onTap: () {
+                // Handle My Appointments option click
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+            ListTile(
+              title: Text('Set Up Business'),
+              onTap: () {
+                // Handle Set Up Business option click
+                Navigator.pop(context); // Close the drawer
+              },
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         title: Text('Dashboard'),
-      ),
+       
+        ),
+      
       body: GridView.count(
         crossAxisCount: 2,
         padding: EdgeInsets.all(16.0),
@@ -17,7 +69,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/ghanian.jpg', key: null,)),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/ghanian.jpg', key: null, salons: [],)),
               );
             }, 
           ),
@@ -27,7 +79,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const ImageDetailScreen(imageUrl: 'images/fishborn.jpg', key: null,)),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/fishborn.jpg', key: null, salons: [],)),
               );
             },
           ),
@@ -37,7 +89,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/bandika.jpg', key: null,)),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/bandika.jpg', key: null, salons: [],)),
               );
             }, 
           ),
@@ -47,7 +99,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg',  )),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg', key: null, salons: [],  )),
               );
             },
           ),
@@ -57,7 +109,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg',  )),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg', key: null, salons: [],  )),
               );
             },
           ),
@@ -67,7 +119,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg',  )),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg', key: null, salons: [],  )),
               );
             },
           ),
@@ -77,7 +129,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg',  )),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg', key: null, salons: [],  )),
               );
             },
           ),
@@ -87,7 +139,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg',  )),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg', key: null, salons: [],  )),
               );
             },
           ),
@@ -97,7 +149,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg',  )),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg', key: null, salons: [],  )),
               );
             },
           ),
@@ -107,7 +159,7 @@ class Dashboard extends StatelessWidget {
             onTap: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg',  )),
+                MaterialPageRoute(builder: (context) => ImageDetailScreen(imageUrl: 'images/boxbraid.jpg', key: null, salons: [],  )),
               );
             },
           ),
@@ -156,23 +208,3 @@ class ImageCard extends StatelessWidget {
   }
 }
 
-class ImageDetailScreen extends StatelessWidget {
-  final String imageUrl;
-
-  const ImageDetailScreen({Key? key, required this.imageUrl}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Image Detail'),
-      ),
-      body: Center(
-        child: Image.asset(
-          imageUrl,
-          fit: BoxFit.cover,
-        ),
-      ),
-    );
-  }
-}
