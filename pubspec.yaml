@@ -38,6 +38,8 @@ dependencies:
   cloud_firestore: ^4.7.0
   firebase_auth: ^4.6.0
   url_launcher: ^6.1.11
+  device_calendar: ^4.3.1
+  timezone: ^0.9.2
 
 dev_dependencies:
   flutter_test:

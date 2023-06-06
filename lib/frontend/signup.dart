@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:salonbooking/frontend/businessSet.dart';
 
 import 'login.dart';
 
@@ -110,12 +111,10 @@ class SignupScreen extends StatelessWidget {
             ElevatedButton(
               child: Text('Submit'),
               onPressed: () {
-                // Handle submit button click
-
-                // Navigate to the login screen
+               
                 Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  MaterialPageRoute(builder: (context) => BusinessSet()),
                 );
               },
             ),

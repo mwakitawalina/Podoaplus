@@ -24,6 +24,8 @@ class ImageDetailScreen extends StatelessWidget {
 
 import 'package:flutter/material.dart';
 
+import 'appointmentScreen.dart';
+
 class ImageDetailScreen extends StatelessWidget {
   final String imageUrl;
   final List<Salon> salons;
@@ -37,24 +39,48 @@ class ImageDetailScreen extends StatelessWidget {
         title: Text('Image Detail'),
       ),
       body: Column(
-        children: [
+
+        /*children: [
+          Expanded(child: 
           Image.network(imageUrl),
+          fit: Boxfit.cover,
+          ),*/
+           children: [
+          Expanded(
+            child: Image.network(
+              imageUrl,
+              fit: BoxFit.cover, // Set the image to cover the whole space
+            ),
+          ),
+          
           SizedBox(height: 16),
           Text(
             'Salons Offering this Hairstyle:',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
           
-          Expanded(
+           Expanded(
             child: ListView.builder(
               itemCount: salons.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(salons[index].name),
-                  subtitle: Text(salons[index].location),
+                  title: Text(salons[index] as String),
+                  subtitle: Text('Location: Nairobi'), // Replace with actual location
                 );
               },
             ),
+          ),
+           SizedBox(height: 10),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => AppointmentScreen(),
+                ),
+              );
+            },
+            child: Text('Book Appointment'),
           ),
         ],
       ),
