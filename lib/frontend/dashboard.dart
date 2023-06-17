@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart';
+import 'package:salonbooking/frontend/appointmentScreen.dart';
+import 'package:salonbooking/frontend/businessSet.dart';
 
 import '../Utils/navigation.dart';
 import 'MyAccount.dart';
@@ -42,13 +44,26 @@ class Dashboard extends StatelessWidget {
               onTap: () {
                 // Handle My Appointments option click
                 Navigator.pop(context); // Close the drawer
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => AppointmentScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
               title: Text('Set Up Business'),
               onTap: () {
                 // Handle Set Up Business option click
-                Navigator.pop(context); // Close the drawer
+                Navigator.pop(context); 
+
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BusinessSet(),
+                  ),
+                );
               },
             ),
           ],

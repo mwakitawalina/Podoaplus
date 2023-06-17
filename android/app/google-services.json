@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "33489120151",
+    "firebase_url": "https://podoaplus-default-rtdb.firebaseio.com",
+    "project_id": "podoaplus",
+    "storage_bucket": "podoaplus.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:33489120151:android:681563ebd54f3b9bfb32d2",
+        "android_client_info": {
+          "package_name": "com.example.salonbooking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "33489120151-ogv6otna7eud7veaqbvvflh75d6093su.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCJj8x1DKg7EnchNCZ4HQbK2kHht2a7zq0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "33489120151-ogv6otna7eud7veaqbvvflh75d6093su.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

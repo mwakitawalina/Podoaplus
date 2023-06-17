@@ -11,7 +11,7 @@ class _SliderScreenState extends State<SliderScreen> {
   int _currentPage = 0;
 
   final List<String> _imagePaths =
-   [    'images/bandika.jpg',  
+   [    'images/bandika2.jpg',  
         'images/shortafro.jpg',   
         'images/boxbraid.jpg',  ];
 

@@ -1,5 +1,164 @@
 import 'package:flutter/material.dart';
 import 'package:salonbooking/frontend/businessSet.dart';
+import 'package:salonbooking/frontend/login.dart';
+
+class SignupScreen extends StatelessWidget {
+  final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _phoneController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  void _registerClient(BuildContext context) {
+    // Perform client registration logic here
+    // Retrieve values from text controllers
+    String name = _nameController.text;
+    String email = _emailController.text;
+    String phone = _phoneController.text;
+    String password = _passwordController.text;
+
+    // Perform validation and client registration logic
+     if (name.isNotEmpty && email.isNotEmpty && phone.isNotEmpty && password.isNotEmpty) {
+    // Client registration success, navigate to login screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => LoginScreen()),
+    );
+  }else {
+      // Display error message or perform error handling
+      print('Error: All fields are required');
+    }
+  }
+
+  void _setUpBusiness(BuildContext context) {
+    // Perform business setup logic here
+    // Retrieve values from text controllers
+    String name = _nameController.text;
+    String email = _emailController.text;
+    String phone = _phoneController.text;
+    String password = _passwordController.text;
+
+    // Perform validation and business setup logic
+   if (name.isNotEmpty && email.isNotEmpty && phone.isNotEmpty && password.isNotEmpty) {
+    // Client registration success, navigate to login screen
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => BusinessSet()),
+    );
+  }else {
+      // Display error message or perform error handling
+      print('Error: All fields are required');
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Sign Up'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Register as a Client'),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          TextFormField(
+                            controller: _nameController,
+                            decoration: InputDecoration(labelText: 'Name'),
+                          ),
+                          TextFormField(
+                            controller: _emailController,
+                            decoration: InputDecoration(labelText: 'Email'),
+                          ),
+                          TextFormField(
+                            controller: _phoneController,
+                            decoration: InputDecoration(labelText: 'Phone Number'),
+                          ),
+                          TextFormField(
+                            controller: _passwordController,
+                            decoration: InputDecoration(labelText: 'Password'),
+                            obscureText: true,
+                          ),
+                        ],
+                      ),
+                      actions: [
+                        ElevatedButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text('Cancel'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => _registerClient(context),
+                          child: Text('Submit'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Text('Register as a Client'),
+            ),
+            SizedBox(height: 16,),
+            ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (BuildContext context) {
+                    return AlertDialog(
+                      title: Text('Set Up My Business'),
+                      content: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          TextFormField(
+                            controller: _nameController,
+                            decoration: InputDecoration(labelText: 'Name'),
+                          ),
+                          TextFormField(
+                            controller: _emailController,
+                            decoration: InputDecoration(labelText: 'Email'),
+                          ),
+                          TextFormField(
+                            controller: _phoneController,
+                            decoration: InputDecoration(labelText: 'Phone Number'),
+                          ),
+                          TextFormField(
+                            controller: _passwordController,
+                            decoration: InputDecoration(labelText: 'Password'),
+                            obscureText: true,
+                          ),
+                        ],
+                      ),
+                      actions: [
+                        ElevatedButton(
+                          onPressed: () => Navigator.of(context).pop(),
+                          child: Text('Cancel'),
+                        ),
+                        ElevatedButton(
+                          onPressed: () => _setUpBusiness(context),
+                          child: Text('Submit'),
+                        ),
+                      ],
+                    );
+                  },
+                );
+              },
+              child: Text('Set Up My Business'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+/*import 'package:flutter/material.dart';
+import 'package:salonbooking/frontend/businessSet.dart';
 
 import 'login.dart';
 
@@ -128,7 +287,7 @@ class SignupScreen extends StatelessWidget {
         );
       },
     );
-  }
+  }*/
 
 
 
