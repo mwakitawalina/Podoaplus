@@ -48,26 +48,32 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
     }
   }
 
-  Future<void> _addToCalendar() async {
+  Future<void> _addToCalendar(String location, TimeOfDay selectedTime) async {
     final calendar = DeviceCalendarPlugin();
+
+    await calendar.requestPermissions();
     final permissionsGranted = await calendar.hasPermissions();
 
     if (permissionsGranted.isSuccess && permissionsGranted.data!) {
-      final location = await tz.getLocation(tz.local as String);
+      // final location = await tz.getLocation(tz.local.name);
 
       final startDateTime = tz.TZDateTime.from(
-        selectedDate,
-        selectedTime as Location,
-        
+        selectedDate.copyWith(
+            hour: selectedTime.hour, minute: selectedTime.minute),
+        tz.local,
       );
 
-      final endDateTime = startDateTime.add(Duration(hours: 1)); // Set the end time to 1 hour after the start time
-
+      final endDateTime = startDateTime.add(const Duration(
+          hours: 1)); // Set the end time to 1 hour after the start time
+      var calendars = (await calendar.retrieveCalendars()).data;
       final event = Event(
-        'Schedule your appointment',
+        calendars == null || calendars.isEmpty
+            ? ((await calendar.createCalendar("Salon Appointments")).data)
+            : calendars.first.id,
+        title: "Salon Appointment",
         start: startDateTime,
         end: endDateTime,
-        location: 'Appointment location',
+        location: location,
       );
 
       final createResult = await calendar.createOrUpdateEvent(event);
@@ -122,7 +128,9 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _addToCalendar,
+              onPressed: () async {
+                await _addToCalendar("Nairobi", selectedTime);
+              },
               child: Text('Add to Calendar'),
             ),
           ],

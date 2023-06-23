@@ -30,7 +30,8 @@ class ImageDetailScreen extends StatelessWidget {
   final String imageUrl;
   final List<Salon> salons;
 
-  ImageDetailScreen({required this.imageUrl, required this.salons, required key});
+  ImageDetailScreen(
+      {required this.imageUrl, required this.salons, required key});
 
   @override
   Widget build(BuildContext context) {
@@ -39,38 +40,43 @@ class ImageDetailScreen extends StatelessWidget {
         title: Text('Image Detail'),
       ),
       body: Column(
-
         /*children: [
           Expanded(child: 
           Image.network(imageUrl),
           fit: Boxfit.cover,
           ),*/
-           children: [
+        children: [
           Expanded(
-            child: Image.network(
-              imageUrl,
-              fit: BoxFit.cover, // Set the image to cover the whole space
-            ),
+            child: imageUrl.contains("http")
+                ? Image.network(
+                    imageUrl,
+                    fit: BoxFit.cover, // Set the image to cover the whole space
+                  )
+                : Image.asset(
+                    imageUrl,
+                    fit: BoxFit.cover, // Set the image to cover the whole space
+                  ),
           ),
-          
           SizedBox(height: 16),
           Text(
             'Salons Offering this Hairstyle:',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
-          
-           Expanded(
+          Expanded(
             child: ListView.builder(
               itemCount: salons.length,
               itemBuilder: (context, index) {
                 return ListTile(
-                  title: Text(salons[index] as String),
-                  subtitle: Text('Location: Nairobi'), // Replace with actual location
+                  title: Text(
+                    salons[index].name,
+                  ),
+                  subtitle: Text(
+                      salons[index].location), // Replace with actual location
                 );
               },
             ),
           ),
-           SizedBox(height: 10),
+          SizedBox(height: 10),
           ElevatedButton(
             onPressed: () {
               Navigator.push(
@@ -95,15 +101,16 @@ class Salon {
   Salon({required this.name, required this.location});
 }
 
-void main() {
-  runApp(MaterialApp(
-    home: ImageDetailScreen(
-      imageUrl: 'images/ghanian.jpg',
-      salons: [
-        Salon(name: 'Bestlady Salon', location: 'Nairobi'),
-        Salon(name: 'Podoaplus', location: 'Kisumu'),
-        Salon(name: 'Kipodozi', location: 'Mombasa'),
-      ], key: null,
-    ),
-  ));
-}
+// void main() {
+//   runApp(MaterialApp(
+//     home: ImageDetailScreen(
+//       imageUrl: 'images/ghanian.jpg',
+//       salons: [
+//         Salon(name: 'Bestlady Salon', location: 'Nairobi'),
+//         Salon(name: 'Podoaplus', location: 'Kisumu'),
+//         Salon(name: 'Kipodozi', location: 'Mombasa'),
+//       ],
+//       key: null,
+//     ),
+//   ));
+// }
