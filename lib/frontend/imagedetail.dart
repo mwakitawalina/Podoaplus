@@ -29,15 +29,19 @@ import 'appointmentScreen.dart';
 class ImageDetailScreen extends StatelessWidget {
   final String imageUrl;
   final List<Salon> salons;
+  final String label;
 
   ImageDetailScreen(
-      {required this.imageUrl, required this.salons, required key});
+      {required this.imageUrl,
+      required this.salons,
+      required key,
+      required this.label});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Image Detail'),
+        title: Text('Hair Style : $label'),
       ),
       body: Column(
         /*children: [
@@ -70,24 +74,24 @@ class ImageDetailScreen extends StatelessWidget {
                   title: Text(
                     salons[index].name,
                   ),
-                  subtitle: Text(
-                      salons[index].location), // Replace with actual location
+                  subtitle: Text(salons[index].location),
+                  trailing: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => AppointmentScreen(
+                              salon: salons[index], style: label),
+                        ),
+                      );
+                    },
+                    child: Text('Book Appointment'),
+                  ), // Replace with actual location
                 );
               },
             ),
           ),
           SizedBox(height: 10),
-          ElevatedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => AppointmentScreen(),
-                ),
-              );
-            },
-            child: Text('Book Appointment'),
-          ),
         ],
       ),
     );

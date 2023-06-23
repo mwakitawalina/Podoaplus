@@ -3,7 +3,14 @@ import 'package:device_calendar/device_calendar.dart';
 import 'package:timezone/timezone.dart' as tz;
 import 'package:timezone/data/latest.dart' as tz;
 
+import 'imagedetail.dart';
+
 class AppointmentScreen extends StatefulWidget {
+  final Salon salon;
+  final String style;
+
+  const AppointmentScreen(
+      {super.key, required this.salon, required this.style});
   @override
   _AppointmentScreenState createState() => _AppointmentScreenState();
 }
@@ -71,6 +78,8 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
             ? ((await calendar.createCalendar("Salon Appointments")).data)
             : calendars.first.id,
         title: "Salon Appointment",
+        description:
+            "Appointment booked at ${widget.salon.name} for the hairstyle : ${widget.style}",
         start: startDateTime,
         end: endDateTime,
         location: location,
